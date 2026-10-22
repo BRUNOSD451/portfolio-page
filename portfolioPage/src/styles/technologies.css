@@ -1,0 +1,52 @@
+.technology-section {
+  border-block: 1px solid var(--line);
+  background: #151515;
+}
+.technology-inner {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  min-height: 104px;
+  padding-block: 22px;
+}
+.technology-inner > p {
+  width: 174px;
+  flex-shrink: 0;
+  font-size: 8px;
+  letter-spacing: 1.15px;
+  color: #938b82;
+  line-height: 1.9;
+}
+.technology-inner > p strong {
+  color: #bcb4ab;
+  font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.6px;
+}
+.technology-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 11px 3px;
+  scrollbar-width: thin;
+  scrollbar-color: #3c3731 transparent;
+}
+.technology {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  color: #bcb9b5;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.technology img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.technology > svg {
+  color: #b2a292;
+}

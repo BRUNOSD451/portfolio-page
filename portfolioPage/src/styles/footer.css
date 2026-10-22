@@ -1,0 +1,25 @@
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 27px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+}
+.site-footer .wordmark {
+  font-size: 16px;
+}
+.site-footer p {
+  font-size: 9px;
+  color: #999087;
+}
+.back-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #b8aa9c;
+  font-size: 9px;
+}
+.back-top svg {
+  color: var(--accent);
+}

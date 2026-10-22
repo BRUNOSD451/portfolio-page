@@ -1,0 +1,226 @@
+.project-dialog {
+  position: fixed;
+  max-width: none;
+  width: 80vw;
+  height: 80dvh;
+  max-height: 80dvh;
+  overflow: hidden;
+  padding: 0;
+  margin: auto;
+  border: 1px solid #40382f;
+  border-radius: 14px;
+  background: #161616;
+  color: #ece8e2;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #4c3d30 #161616;
+}
+.project-dialog::backdrop {
+  background: #000b;
+  backdrop-filter: blur(9px);
+}
+.dialog-content {
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.dialog-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 1fr);
+  gap: 28px;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+.dialog-body > .error-state {
+  grid-column: 1 / -1;
+}
+.dialog-body > .gallery,
+.dialog-body > .gallery-empty {
+  min-width: 0;
+}
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff30;
+  border-radius: 8px;
+  color: #fff;
+  background: #141414dc;
+}
+.gallery-arrow:hover {
+  background: var(--accent);
+  color: #101010;
+}
+.gallery-arrow-previous {
+  left: 12px;
+}
+.gallery-arrow-next {
+  right: 12px;
+}
+.dialog-body .dialog-description {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 0;
+  padding: 0 12px 12px 0;
+  border: 0;
+  overflow-y: auto;
+}
+.dialog-body .dialog-description p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+.dialog-body .dialog-description h3 {
+  font-size: 16px;
+}
+.dialog-body .gallery-stage {
+  height: max(230px, calc(80dvh - 235px));
+}
+.dialog-body .gallery-stage > img,
+.dialog-body .gallery-stage > video {
+  max-height: 100%;
+}
+.dialog-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+.dialog-heading .eyebrow {
+  color: var(--accent);
+  font-size: 8px;
+  margin-bottom: 8px;
+}
+.dialog-heading h2 {
+  font-size: 30px;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+.dialog-close {
+  position: sticky;
+  top: 0;
+  border: 1px solid var(--line);
+}
+.gallery {
+  margin-top: 0;
+}
+.gallery-stage {
+  height: min(54vh, 490px);
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: #0c0c0c;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.gallery-stage > img,
+.gallery-stage > video {
+  position: absolute;
+  inset: 0;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: min(54vh, 490px);
+}
+.gallery-counter {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: #161616cc;
+  border: 1px solid #ffffff20;
+  font-size: 11px;
+  pointer-events: none;
+}
+.gallery-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.gallery-navigation > span {
+  font-size: 10px;
+  color: #a99d91;
+}
+.gallery-thumbnails {
+  display: flex;
+  gap: 9px;
+  margin-top: 10px;
+  padding-block: 6px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #55402c transparent;
+}
+.gallery-thumbnails > button {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 53px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid #39332d;
+  background: #101010;
+  color: #b19880;
+}
+.gallery-thumbnails > button.selected {
+  border-color: var(--accent);
+  background: #ff7c3215;
+}
+.gallery-thumbnails img {
+  height: 43px;
+  width: 54px;
+  object-fit: contain;
+}
+.gallery-empty {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 15px;
+  padding: 40px 20px;
+  text-align: center;
+  color: #a49b92;
+  font-size: 12px;
+  min-height: 150px;
+}
+.gallery-empty > svg {
+  color: #a4744a;
+}
+.dialog-description {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 30px;
+  margin-top: 28px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.dialog-description h3 {
+  font-size: 13px;
+  font-weight: 650;
+  margin-bottom: 14px;
+}
+.dialog-description p {
+  font-size: 12px;
+  color: #b8b1a9;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.dialog-description .technology-tags {
+  margin-top: 0;
+}
+.dialog-description .technology-tags > span {
+  font-size: 10px;
+}

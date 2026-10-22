@@ -1,0 +1,349 @@
+/* Movimento separado do layout: entradas leves e interações em transform/opacity. */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 2px;
+  z-index: 40;
+  background: linear-gradient(90deg, #d35016, #ff7c32, #ffc080);
+  box-shadow: 0 0 12px #ff7c324d;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.hero-ambience {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 30px;
+  z-index: 0;
+}
+.hero-ambience > span {
+  position: absolute;
+  width: min(680px, 95%);
+  aspect-ratio: 1;
+  left: 0;
+  top: -25%;
+  background: radial-gradient(ellipse, #ff7c3211, transparent 65%);
+}
+.hero-ambience > span:last-child {
+  left: auto;
+  right: -10%;
+  top: 20%;
+  background: radial-gradient(ellipse, #b8581510, transparent 65%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > * {
+    animation: rise-in 850ms var(--ease-out) both;
+  }
+  .hero-copy > :nth-child(2) {
+    animation-delay: 90ms;
+  }
+  .hero-copy > :nth-child(3) {
+    animation-delay: 170ms;
+  }
+  .hero-copy > :nth-child(4) {
+    animation-delay: 260ms;
+  }
+  .hero-copy > :nth-child(5) {
+    animation-delay: 340ms;
+  }
+  .hero-copy > :nth-child(6) {
+    animation-delay: 420ms;
+  }
+  .hero-copy > :focus-within {
+    animation: none;
+  }
+
+  .hero-ambience > span {
+    animation: ambient-drift 14s ease-in-out infinite alternate;
+  }
+  .hero-ambience > span:last-child {
+    animation-delay: -8s;
+    animation-direction: alternate-reverse;
+  }
+  .hero .accent-word {
+    background: linear-gradient(100deg, #ff7c32 25%, #ffc492 45%, #ff7c32 65%);
+    background-size: 240% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: headline-light 1800ms 700ms ease-out both;
+  }
+  .intro-wave {
+    animation: star-turn 1700ms 450ms var(--ease-out) both;
+  }
+  .scroll-cue > svg {
+    animation: scroll-nudge 1600ms 1500ms ease-in-out 3;
+  }
+
+  .project-dialog[open] {
+    animation: dialog-enter 360ms var(--ease-out);
+  }
+  .project-dialog[open]::backdrop {
+    animation: fade-in 300ms ease-out;
+  }
+  .gallery-stage > img,
+  .gallery-stage > video {
+    animation: media-enter 400ms var(--ease-out);
+  }
+  .technology-select-options {
+    animation: menu-enter 220ms var(--ease-out);
+    transform-origin: top;
+  }
+  .chat-message {
+    animation: message-enter 380ms var(--ease-out) both;
+  }
+  .chat-error,
+  .latest-message {
+    animation: fade-in 220ms ease-out;
+  }
+  .navigation.is-open {
+    animation: menu-enter 220ms var(--ease-out);
+  }
+}
+
+.button,
+.header-cta,
+.send-button {
+  transition:
+    transform 280ms var(--ease-out),
+    box-shadow 280ms ease,
+    background 200ms,
+    border-color 200ms;
+}
+.button-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.button-primary::after {
+  content: "";
+  position: absolute;
+  inset: -80% auto -80% -60%;
+  width: 35%;
+  transform: skewX(-22deg);
+  background: linear-gradient(90deg, transparent, #ffffff48, transparent);
+  pointer-events: none;
+}
+.button > svg,
+.header-cta > svg,
+.contact-item > svg,
+.back-top > svg {
+  transition: transform 320ms var(--ease-out);
+}
+.button:active,
+.header-cta:active,
+.send-button:active {
+  transform: scale(0.97);
+}
+
+.project-card {
+  transition:
+    transform 450ms var(--ease-out),
+    border-color 300ms ease,
+    box-shadow 450ms ease;
+}
+.technology img {
+  transition: transform 380ms var(--ease-out);
+}
+.technology {
+  transition: color 250ms ease;
+}
+.chat-suggestions button {
+  transition:
+    transform 280ms var(--ease-out),
+    border-color 200ms,
+    background 200ms;
+}
+.chat-suggestions button > svg:last-child {
+  transition: transform 280ms var(--ease-out);
+}
+.chat-composer {
+  transition:
+    box-shadow 250ms,
+    border-color 250ms;
+}
+.chat-composer:focus-within {
+  box-shadow: 0 0 0 3px #ff7c3210;
+}
+.gallery-thumbnails > button {
+  transition:
+    transform 220ms var(--ease-out),
+    border-color 200ms,
+    background 200ms;
+}
+.gallery-thumbnails > button.selected {
+  transform: translateY(-2px);
+}
+.contact-icon {
+  transition:
+    transform 350ms var(--ease-out),
+    border-color 250ms;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button-primary:hover {
+    box-shadow: 0 8px 28px #ff7c3226;
+  }
+  .button-primary:hover::after {
+    animation: button-shine 700ms ease-out;
+  }
+  .button:hover > svg:last-child,
+  .header-cta:hover > svg {
+    transform: translate(2px, -2px);
+  }
+  .project-card:hover {
+    transform: translateY(-7px);
+    box-shadow:
+      0 18px 44px #0005,
+      0 0 0 1px #ff7c3210;
+  }
+  .technology:hover {
+    color: #fff;
+  }
+  .technology:hover img {
+    transform: translateY(-3px) scale(1.16) rotate(-5deg);
+  }
+  .chat-suggestions button:hover:not(:disabled) {
+    transform: translateX(4px);
+  }
+  .chat-suggestions button:hover > svg:last-child {
+    transform: translateX(3px);
+  }
+  .send-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px #ff7c322b;
+  }
+  .contact-item:hover .contact-icon {
+    transform: rotate(-7deg);
+    border-color: #ac7549;
+  }
+  .contact-item:hover > svg {
+    transform: translate(3px, -3px);
+  }
+  .back-top:hover > svg {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ambient-drift {
+  from {
+    opacity: 0.55;
+    transform: translate(-4%, 0) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(14%, 8%) scale(1.1);
+  }
+}
+@keyframes headline-light {
+  from {
+    background-position: 120% center;
+  }
+  to {
+    background-position: 0% center;
+  }
+}
+@keyframes star-turn {
+  from {
+    transform: rotate(-130deg) scale(0.6);
+  }
+  to {
+    transform: rotate(0) scale(1);
+  }
+}
+@keyframes scroll-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes media-enter {
+  from {
+    opacity: 0.15;
+    transform: translateX(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes message-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes button-shine {
+  to {
+    left: 140%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .accent-word {
+    background: none;
+    color: var(--accent);
+  }
+  .reading-progress {
+    display: none;
+  }
+  .button:active,
+  .header-cta:active,
+  .send-button:active,
+  .gallery-thumbnails > button.selected {
+    transform: none;
+  }
+}
