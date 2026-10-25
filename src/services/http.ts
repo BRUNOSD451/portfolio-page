@@ -1,7 +1,8 @@
+// 60 s cobre a primeira requisição depois que a API gratuita adormece (~50 s).
 export async function request<T>(
   url: string,
   options: RequestInit = {},
-  timeout = 15_000,
+  timeout = 60_000,
 ): Promise<T> {
   const timeoutSignal = AbortSignal.timeout(timeout);
   try {
